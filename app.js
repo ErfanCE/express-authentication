@@ -1,4 +1,5 @@
 const { join } = require('node:path');
+const { AppError } = require('./utils/app-error');
 const express = require('express');
 const apiRouter = require('./routes/api-routes');
 const viewRouter = require('./routes/view-routes');
@@ -26,21 +27,21 @@ app.use('/api', apiRouter);
 app.all('*', (request, response, next) => {
   const { method, originalUrl: pathname } = request;
 
-  next(
-    new Error(`${method} ${pathname} not Found.`, {
-      cause: { statusCode: 404 }
-    })
-  );
+  next(new AppError(404, `${method} ${pathname} not Found.`));
 });
 
 // global error handler
 app.use((err, request, response, next) => {
-  console.log(err);
+  const {
+    statusCode = 500,
+    status = 'error',
+    message = 'something went wrong, not your fault :)'
+  } = err;
 
-  response.status(err.cause.statusCode).json({
-    status: 'fail',
-    error: { message: err.message }
-  });
+  console.log(err);
+  console.log(err.stack);
+
+  response.status(statusCode).json({ status, message });
 });
 
 app.listen(port, host, () => {
