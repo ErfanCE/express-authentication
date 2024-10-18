@@ -1,0 +1,23 @@
+[
+  {
+    "isLoggedIn": false,
+    "username": "erfan",
+    "password": "user1234",
+    "email": "erfan@jmail.com",
+    "gender": "not-set"
+  },
+  {
+    "isLoggedIn": true,
+    "username": "behnam",
+    "password": "user1234",
+    "email": "behnam@gahoo.com",
+    "gender": "not-set"
+  },
+  {
+    "isLoggedIn": false,
+    "username": "amin",
+    "password": "user1234",
+    "email": "amin@outseen.com",
+    "gender": "male"
+  }
+]

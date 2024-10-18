@@ -31,15 +31,22 @@ app.all('*', (request, response, next) => {
 });
 
 // global error handler
-app.use((err, request, response, next) => {
-  const {
+app.use((err, _request, response, _next) => {
+  let {
     statusCode = 500,
     status = 'error',
     message = 'something went wrong, not your fault :)'
   } = err;
 
-  console.log(err);
-  console.log(err.stack);
+  // express handle json parse
+  if (err?.type === 'entity.parse.failed') {
+    status = 'fail';
+  }
+
+  if (statusCode === 500) {
+    console.error(`[-] ${message}`);
+    console.log(err.stack);
+  }
 
   response.status(statusCode).json({ status, message });
 });
