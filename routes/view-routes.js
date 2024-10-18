@@ -1,8 +1,10 @@
-const { join } = require('node:path');
 const router = require('express').Router();
+const {
+  getUserProfile,
+  getLoginPage
+} = require('../controllers/view-controller');
 
-router.get('/', (request, response) => {
-  response.status(200).render(join(__dirname, '../views/index.ejs'));
-});
+router.get('/login', getLoginPage);
+router.get('/profile', getUserProfile);
 
 module.exports = router;

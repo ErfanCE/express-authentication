@@ -20,8 +20,16 @@ const login = async (request, response, next) => {
     }
 
     // update user status
-    user.isLoggedIn = true;
-    await writeUsersData(users);
+    const modifiedUsers = users.map((user) => {
+      if (user.username === username) {
+        user.isLoggedIn = true;
+      } else {
+        user.isLoggedIn = false;
+      }
+      return user;
+    });
+
+    await writeUsersData(modifiedUsers);
 
     response.status(200).json({
       status: 'success',
