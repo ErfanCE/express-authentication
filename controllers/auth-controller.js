@@ -27,7 +27,9 @@ const login = async (request, response, next) => {
       status: 'success',
       data: { username }
     });
-  } catch (error) {}
+  } catch (err) {
+    next(new AppError(500, `[-] auth-controller > login: ${err?.message}`));
+  }
 };
 
 const signup = async (request, response, next) => {
@@ -65,7 +67,7 @@ const signup = async (request, response, next) => {
       data: { username }
     });
   } catch (err) {
-    next(new AppError(500, err?.message));
+    next(new AppError(500, `[-] auth-controller > signup: ${err?.message}`));
   }
 };
 
