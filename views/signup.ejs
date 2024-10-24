@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
+    <title>Signup Page</title>
   </head>
   <style>
     * {
@@ -15,31 +15,47 @@
       margin-bottom: 10px;
     }
 
-    #login-status {
+    #signup-status {
       opacity: 0;
     }
   </style>
   <body>
-    <h3>Login Form</h3>
-    <form id="login-form">
+    <h3>Signup Form</h3>
+    <form id="signup-form">
       <input
         type="text"
         id="username"
         placeholder="username"
+        value="erfan"
         class="form-control"
       />
       <input
         type="text"
         id="password"
         placeholder="password"
+        value="user1234"
+        class="form-control"
+      />
+      <input
+        type="text"
+        id="email"
+        placeholder="email"
+        value="erfan@jmail.com"
+        class="form-control"
+      />
+      <input
+        type="text"
+        id="gender"
+        placeholder="gender"
+        value="male"
         class="form-control"
       />
 
-      <button type="submit" class="form-control">Login</button>
+      <button type="submit" class="form-control">Signup</button>
     </form>
 
-    <p id="login-status">DEFAULT STATUS</p>
+    <p id="signup-status">DEFAULT STATUS</p>
 
-    <script src="/javascripts/login.js"></script>
+    <script src="/javascripts/signup.js"></script>
   </body>
 </html>

@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const {
-  getUserProfile,
-  getLoginPage
+  renderLoginPage,
+  renderSignupPage,
+  renderUserAccountPage
 } = require('../controllers/view-controller');
 
-router.get('/login', getLoginPage);
-router.get('/profile', getUserProfile);
+router.get('/login', renderLoginPage);
+router.get('/signup', renderSignupPage);
+router.get('/account', renderUserAccountPage);
 
 module.exports = router;

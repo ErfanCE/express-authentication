@@ -7,7 +7,7 @@
     "gender": "not-set"
   },
   {
-    "isLoggedIn": true,
+    "isLoggedIn": false,
     "username": "amin",
     "password": "user1234",
     "email": "amin@outseen.com",

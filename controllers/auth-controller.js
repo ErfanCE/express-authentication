@@ -42,13 +42,12 @@ const login = async (request, response, next) => {
 
 const signup = async (request, response, next) => {
   try {
-    const {
-      username = null,
-      password = null,
-      email = null,
-      gender = 'not-set'
-    } = request.body;
+    const { username = null, password = null, email = null } = request.body;
+    let { gender = 'not-set' } = request.body;
 
+    if (!gender?.trim()) {
+      gender = 'not-set';
+    }
     if (!username?.trim() || !password?.trim() || !email?.trim()) {
       return next(
         new AppError(400, 'username, password and email are required.')
