@@ -31,7 +31,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     const { data } = await response.json();
 
-    loginStatus.textContent = `${data.username} signed up successfully.`;
+    loginStatus.textContent = `${data.username} Logged in successfully.`;
     loginStatus.style.opacity = 1;
     loginStatus.style.color = 'green';
 

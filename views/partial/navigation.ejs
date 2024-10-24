@@ -1,0 +1,12 @@
+<ul>
+  <% if (isLoggedIn) { %>
+  <li>
+    <a class="active" href="http://localhost:8000/account">Account</a>
+  </li>
+  <% } else { %>
+  <li><a href="http://localhost:8000/login">Login</a></li>
+  <li><a href="http://localhost:8000/signup">Singup</a></li>
+  <% } %>
+
+  <li><a href="http://localhost:8000/admin-panel">Admin Panel</a></li>
+</ul>

@@ -78,4 +78,27 @@ const signup = async (request, response, next) => {
   }
 };
 
-module.exports = { login, signup };
+const logout = async (request, response, next) => {
+  try {
+    const user = users.find((user) => user.isLoggedIn);
+    if (!user) {
+      next(new AppError(400, 'login first.'));
+    }
+
+    const modifiedUsers = users.map((user) => {
+      user.isLoggedIn = false;
+      return user;
+    });
+
+    await writeUsersData(modifiedUsers);
+
+    response.status(204).json({
+      status: 'success',
+      data: null
+    });
+  } catch (err) {
+    next(new AppError(500, `[-] auth-controller > logout: ${err?.message}`));
+  }
+};
+
+module.exports = { login, signup, logout };
